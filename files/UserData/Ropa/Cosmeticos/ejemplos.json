@@ -1,0 +1,57 @@
+// Cosméticos agregados por archivo (sin recompilar el mod). Cada .json de esta carpeta se lee al abrir el juego.
+// Campos: id (único), nombre, zona (cabeza | manos | cuerpo), sub (categoría), tags, colores (#RRGGBB),
+//   piezas: forma (esfera, mediaesfera, cubo, cilindro, capsula, cono, toro, torno, tubo, prisma, piramide, gema),
+//           ancla (cabeza, visor, cuello, pecho, espalda, cadera, hombros, mano, muneca, puntadedos, basededos),
+//           pos / rot / esc [x, y, z] en anchos de cuerpo, color (índice en "colores"), espejo, lados, grosor,
+//           perfil [[r, y], ...] (torno) o [[x, y], ...] (prisma), camino [[x, y, z], ...] + radios [...] (tubo).
+//   partes (ropa pintada sobre el cuerpo o las manos): color, hueso (cuerpo | mano | palma | dedos | puntas), inflar,
+//           conds: "sobre 0.2", "bajo 0.6", "banda 0.2 0.6", "frente", "atras", "sinmochila", "ancho 0.1",
+//                  "x -0.1 0.1", "circulo 0 0.45 0.1", "estrella 0 0.45 0.2", "corazon 0 0.45 0.15", "rayas 8",
+//                  "rayasv 10", "cuadros 7", "lunares 7 0.25", "digito 7 0 0.42 0.3", ...
+//   obj: modelo .obj en la carpeta Modelos (se ajusta solo al ancla); bundle + prefab: AssetBundle de la carpeta Bundles.
+//   pos / rot / escala / auto: ajustes del modelo externo (auto = false para ubicarlo a mano).
+{
+  "cosmeticos": [
+    {
+      "id": "ejemplo.sombrero_de_copa_alto",
+      "nombre": "Galera altísima (ejemplo)",
+      "zona": "cabeza",
+      "sub": "ejemplos",
+      "tags": ["galera", "ejemplo"],
+      "colores": ["#1a1a1f", "#d93030"],
+      "piezas": [
+        { "forma": "torno", "perfil": [[0, -0.02], [0.5, -0.02], [0.5, -0.02], [0.5, 0.02], [0.5, 0.02], [0.3, 0.02], [0.3, 0.02], [0.3, 0.8], [0.3, 0.8], [0, 0.8]], "pos": [0, -0.06, 0] },
+        { "forma": "cilindro", "pos": [0, 0.04, 0], "esc": [0.61, 0.04, 0.61], "color": 1 }
+      ]
+    },
+    {
+      "id": "ejemplo.remera_estrella",
+      "nombre": "Remera de estrella (ejemplo)",
+      "zona": "cuerpo",
+      "sub": "ejemplos",
+      "colores": ["#2a4fd6", "#ffd23a"],
+      "partes": [
+        { "color": 0, "conds": ["banda 0.2 0.64", "sinmochila"] },
+        { "color": 1, "conds": ["frente", "estrella 0 0.42 0.2"], "fino": true }
+      ]
+    },
+    {
+      "id": "ejemplo.corona_obj",
+      "nombre": "Corona de modelo OBJ (ejemplo)",
+      "zona": "cabeza",
+      "sub": "ejemplos",
+      "colores": ["#ffc229", "#e0204a"],
+      "obj": "corona_ejemplo.obj",
+      "ancla": "cabeza"
+    },
+    {
+      "id": "ejemplo.guantes_verdes_con_anillo",
+      "nombre": "Guantes verdes con anillos (ejemplo)",
+      "zona": "manos",
+      "sub": "ejemplos",
+      "colores": ["#38b34a", "#ffc229"],
+      "partes": [ { "color": 0, "hueso": "mano", "inflar": 1.6 } ],
+      "piezas": [ { "forma": "toro", "ancla": "basededos", "rot": [90, 0, 0], "esc": [0.05, 0.05, 0.05], "grosor": 0.14, "color": 1 } ]
+    }
+  ]
+}
